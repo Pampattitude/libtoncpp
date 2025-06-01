@@ -20,7 +20,7 @@
 @		memcpy32: ~4
 @		memcpy16: ~8
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 	.file "tonc_memcpy.s"
 

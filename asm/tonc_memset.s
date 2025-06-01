@@ -22,7 +22,7 @@
 
 	.file "tonc_memset.s"
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 @ === void memset32(void *dst, u32 src, u32 wdn); =====================
 /*! \fn void memset32(void *dst, u32 src, u32 wdn) IWRAM_CODE;

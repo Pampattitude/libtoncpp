@@ -5,7 +5,7 @@
 //! \author J Vijn
 //! \date 20071130 - 20090801
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 @ === SoftReset [00h] =================================================
 @ DECL: void SoftReset();

@@ -5,7 +5,7 @@
 //! \author J Vijn
 //! \date 20071130 - 20071130
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 #ifndef CLR_ROUND
 #define CLR_ROUND 1

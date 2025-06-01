@@ -5,7 +5,7 @@
 //! \author J Vijn
 //! \date 20080422 - 20080422
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 /* DECLARATIONS:
 	int nocash_puts(const char *str);

@@ -7,7 +7,7 @@
 //
 // === NOTES ===
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 	.file	"tonc_isr_master.s"
 	.extern	__isr_table;

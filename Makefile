@@ -25,7 +25,7 @@ ARCH		:=	-mthumb -mthumb-interwork
 RARCH		:= -mthumb-interwork -mthumb
 IARCH		:= -mthumb-interwork -marm
 
-bTEMPS		:= 0	# Save gcc temporaries (.i and .s files)
+bTEMPS		:= 0	# Save g++ temporaries (.i and .s files)
 bDEBUG2		:= 0	# Generate debug info (bDEBUG2? Not a full DEBUG flag. Yet)
 
 VERSION		:=	1.4.3
@@ -34,12 +34,12 @@ VERSION		:=	1.4.3
 # Options for code generation
 #---------------------------------------------------------------------------------
 
-CBASE   := $(INCLUDE) -Wall -fno-strict-aliasing #-fno-tree-loop-optimize
-CBASE	+= -O2
+CXXBASE   := $(INCLUDE) -Wall -fno-strict-aliasing #-fno-tree-loop-optimize
+CXXBASE	+= -Ofast
 
-RCFLAGS := $(CBASE) $(RARCH)
-ICFLAGS := $(CBASE) $(IARCH) -mlong-calls #-fno-gcse
-CFLAGS  := $(RCFLAGS)
+RCFLAGS := $(CXXBASE) $(RARCH) -Wno-pointer-arith
+ICFLAGS := $(CXXBASE) $(IARCH) -mlong-calls -fno-gcse -Wno-pointer-arith
+CXXFLAGS  := $(RCFLAGS)
 
 ASFLAGS := $(INCLUDE) -Wa,--warn $(ARCH)
 
@@ -72,18 +72,18 @@ export TARGET	:=	$(CURDIR)/lib/libtonc.a
 
 export VPATH	:=	$(foreach dir,$(DATADIRS),$(CURDIR)/$(dir)) $(foreach dir,$(SRCDIRS),$(CURDIR)/$(dir))
 
-ICFILES		:=	$(foreach dir,$(SRCDIRS),$(notdir $(wildcard $(dir)/*.iwram.c)))
-RCFILES		:=	$(foreach dir,$(SRCDIRS),$(notdir $(wildcard $(dir)/*.c)))
-CFILES		:=  $(ICFILES) $(RCFILES)
+ICFILES		:=	$(foreach dir,$(SRCDIRS),$(notdir $(wildcard $(dir)/*.iwram.cpp)))
+RCFILES		:=	$(foreach dir,$(SRCDIRS),$(notdir $(wildcard $(dir)/*.cpp)))
+CXXFILES		:=  $(ICFILES) $(RCFILES)
 
 SFILES		:=	$(foreach dir,$(SRCDIRS),$(notdir $(wildcard $(dir)/*.s)))
 BINFILES	:=	$(foreach dir,$(DATADIRS),$(notdir $(wildcard $(dir)/*.*)))
 
-export OFILES	:=	$(addsuffix .o,$(BINFILES)) $(CFILES:.c=.o) $(SFILES:.s=.o)
+export OFILES	:=	$(addsuffix .o,$(BINFILES)) $(CXXFILES:.cpp=.o) $(SFILES:.s=.o)
 export INCLUDE	:=	$(foreach dir,$(INCDIRS),-I$(CURDIR)/$(dir))
 export DEPSDIR	:=	$(CURDIR)/build
 
-.PHONY: $(BUILD) clean docs
+.PHONY: $(BUILD) clean docs re
 
 $(BUILD):
 	@[ -d lib ] || mkdir -p lib
@@ -102,11 +102,13 @@ install:
 	@cp -rv include $(DESTDIR)$(DEVKITPRO)/libtonc/include
 	@cp -v lib/libtonc.a $(DESTDIR)$(DEVKITPRO)/libtonc/lib/
 
+re: clean $(BUILD)
+
 #-------------------------------------------------------------------------------
 dist:
 #-------------------------------------------------------------------------------
 	@tar -cvjf libtonc-src-$(VERSION).tar.bz2 asm src include \
-		Makefile todo.txt libtonc.dox base.c base.h
+		Makefile todo.txt libtonc.dox base.cpp base.h
 
 #---------------------------------------------------------------------------------
 
@@ -128,11 +130,11 @@ $(TARGET): $(OFILES)
 
 %.iwram.o : %.iwram.c
 	@echo $(notdir $<)
-	$(CC) -MMD -MP -MF $(DEPSDIR)/$(@:.o=.d) $(ICFLAGS) -c $< -o $@
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$(@:.o=.d) $(ICFLAGS) -c $< -o $@
 
 %.o : %.c
 	@echo $(notdir $<)
-	$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d $(RCFLAGS) -c $< -o $@
+	$(CXX) -MMD -MP -MF $(DEPSDIR)/$*.d $(RCFLAGS) -c $< -o $@
 
 -include $(DEPENDS)
 

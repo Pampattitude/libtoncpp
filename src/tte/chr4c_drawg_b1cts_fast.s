@@ -7,7 +7,7 @@
 @
 @ === NOTES ===
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 #include "tte_types.s"
 
 @ IWRAM_CODE void chr4c_drawg_b1cts_asm(int gid);

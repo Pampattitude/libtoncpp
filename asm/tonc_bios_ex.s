@@ -7,7 +7,7 @@
 
 	.file	"tonc_bios_ex.s"
 	
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 
 @ === VBlankIntrDelay [05h] ===========================================
 @ DECL: void VBlankIntrDelay(u32 count);

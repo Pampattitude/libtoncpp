@@ -8,7 +8,7 @@
 @
 @ === NOTES ===
 
-#include "tonc_asminc.h"
+#include "tonc_asminc.hpp"
 #include "tte_types.s"
 
 @ IWRAM_CODE void bmp8_drawg_b1cts_fast(int gid);
