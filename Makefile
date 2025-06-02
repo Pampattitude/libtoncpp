@@ -35,7 +35,8 @@ VERSION		:=	1.4.3
 #---------------------------------------------------------------------------------
 
 CXXBASE   := $(INCLUDE) -Wall -fno-strict-aliasing #-fno-tree-loop-optimize
-CXXBASE	+= -Ofast
+CXXBASE	+= -O2
+# CXXBASE	+= -Ofast
 
 RCFLAGS := $(CXXBASE) $(RARCH) -Wno-pointer-arith
 ICFLAGS := $(CXXBASE) $(IARCH) -mlong-calls -fno-gcse -Wno-pointer-arith

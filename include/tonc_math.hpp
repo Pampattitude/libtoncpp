@@ -150,11 +150,11 @@ INLINE int  wrap(int x, int min, int max);
 /*! \addtogroup grpMathFixed	*/
 /*! \{	*/
 
-constexpr const u32 FIX_SHIFT      = 8U;
-constexpr const u32 FIX_SCALE      = (1U << FIX_SHIFT);
-constexpr const u32 FIX_MASK       = (FIX_SCALE - 1U);
-constexpr const u32 FIX_SCALEF     = ((float)FIX_SCALE);
-constexpr const u32 FIX_SCALEF_INV = (1.f / FIX_SCALEF);
+constexpr const u32   FIX_SHIFT      = 8U;
+constexpr const u32   FIX_SCALE      = (1U << FIX_SHIFT);
+constexpr const u32   FIX_MASK       = (FIX_SCALE - 1U);
+constexpr const float FIX_SCALEF     = ((float)FIX_SCALE); // TODO(pampa): should it be a float?
+constexpr const u32   FIX_SCALEF_INV = (1.f / FIX_SCALEF);
 
 #define FIX_ONE FIX_SCALE
 
