@@ -24,7 +24,7 @@ INLINE u32 chr4_rmask(uint right);
 INLINE void chr4c_plot(int x, int y, u32 clr, void *dstBase, u32 dstP);
 INLINE void chr4c_colset(u32 *dstD, uint left, uint right, uint height, u32 clr);
 
-void schr4c_floodfill_internal(const TSurface *dst, int x, int y, 
+void schr4c_floodfill_internal(const TSurface *dst, uint x, uint y, 
 	u32 clrNew, u32 clrOld);
 
 
@@ -560,13 +560,13 @@ void schr4c_floodfill(const TSurface *dst, int x, int y, u32 clr)
 	\note	This traverses the lines horizontally. Amazingly, this
 		seems faster than vertically.
 */
-void schr4c_floodfill_internal(const TSurface *dst, int x, int y, 
+void schr4c_floodfill_internal(const TSurface *dst, uint x, uint y, 
 	u32 clrNew, u32 clrOld)
 {
 	uint dstW= dst->width, dstH= dst->height;
 
 	// Find horz edges, then fill.
-	int ii, left=x, right=x;
+	uint ii, left=x, right=x;
 	while(_schr4c_get_pixel(dst, left-1, y)==clrOld && left>0)
 		left--;
 	while(_schr4c_get_pixel(dst, right+1, y)==clrOld && right+1<dstW)

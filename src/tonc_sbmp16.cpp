@@ -18,7 +18,7 @@ typedef u16 pixel_t;
 	(pixel_t*)(psrf->data + (y)*psrf->pitch + (x)*sizeof(pixel_t) )
 
 
-void sbmp16_floodfill_internal(const TSurface *dst, int x, int y, 
+void sbmp16_floodfill_internal(const TSurface *dst, u32 x, u32 y, 
 	u16 clrNew, u16 clrOld);
 
 // --------------------------------------------------------------------
@@ -339,7 +339,7 @@ void sbmp16_floodfill(const TSurface *dst, int x, int y, u32 clr)
 }
 
 //! Internal routine for floodfill
-void sbmp16_floodfill_internal(const TSurface *dst, int x, int y, 
+void sbmp16_floodfill_internal(const TSurface *dst, u32 x, u32 y, 
 	pixel_t clrNew, pixel_t clrOld)
 {
 	pixel_t *dstL= PXPTR(dst, 0, y);

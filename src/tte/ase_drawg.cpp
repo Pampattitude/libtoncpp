@@ -59,7 +59,7 @@ void ase_drawg(uint gid)
 
 	u8 se= tc->cattr[TTE_SPECIAL] + gid*charW*charH;
 
-	int ix, iy;
+	uint ix, iy;
 	for(iy=0; iy<charH; iy++)
 		for(ix=0; ix<charW; ix++, se++)
 			_sbmp8_plot(&tc->dst, ix+x0, iy+y0, se);
@@ -74,7 +74,7 @@ void ase_drawg_s(uint gid)
 
 	u8 se= tc->cattr[TTE_SPECIAL] + gid*charW*charH;
 
-	int ix, iy;
+	uint ix, iy;
 	for(ix=0; ix<charW; ix++)
 		for(iy=0; iy<charH; iy++, se++)
 			_sbmp8_plot(&tc->dst, ix+x0, iy+y0, se);

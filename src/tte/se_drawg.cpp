@@ -64,7 +64,7 @@ void se_drawg_w8h16(uint gid)
 //! Character-plot for reg BGs, any sized font.
 void se_drawg(uint gid)
 {
-	int ix, iy;
+	u32 ix, iy;
 
 	TTE_BASE_VARS(tc, font);
 	u32 charW= (font->cellW+7)/8, charH= (font->cellH+7)/8;
@@ -87,7 +87,7 @@ void se_drawg(uint gid)
 //! Character-plot for reg BGs, any sized, vertically tiled font.
 void se_drawg_s(uint gid)
 {
-	int ix, iy;
+	u32 ix, iy;
 
 	TTE_BASE_VARS(tc, font);
 	u32 charW= (font->cellW+7)/8, charH= (font->cellH+7)/8;

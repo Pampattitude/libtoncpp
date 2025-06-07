@@ -9,6 +9,7 @@
 
 #include <string.h>
 
+#include "tonc_types.hpp"
 #include "tonc_memdef.hpp"
 #include "tonc_core.hpp"
 #include "tonc_bios.hpp"
@@ -53,7 +54,7 @@ void tte_init_se(int bgnr, u16 bgcnt, SCR_ENTRY se0, u32 clrs, u32 bupofs,
 	REG_BGCNT[bgnr]= bgcnt;
 
 	// --- Prep color attributes and palette ---
-	uint dstB= (bgcnt & BG_8BPP) ? 8 : 4;
+	u8 dstB= (bgcnt & BG_8BPP) ? 8 : 4;
 	uint ink, shadow=0, paper;
 	uint se= BFN_GET(se0, SE_ID);
 
@@ -87,7 +88,7 @@ void tte_init_se(int bgnr, u16 bgcnt, SCR_ENTRY se0, u32 clrs, u32 bupofs,
 
 	// --- Bitunpack font ---
 	void *dstD= &tile_mem[BFN_GET(bgcnt, BG_CBB)][se];
-	u32 dstS= font->charCount*font->cellSize;
+	u16 dstS= font->charCount*font->cellSize;
 
 	BUP bup= { dstS, font->bpp, dstB, bupofs };
 	BitUnPack(font->data, dstD, &bup);

@@ -47,7 +47,7 @@
 /*!	\addtogroup grpMathBase	*/
 /*! \{	*/
 
-// Also available as inline functions
+// Also available as INLINE constexpr functions
 
 //! \name core math macros
 //\{
@@ -102,10 +102,10 @@
     } while (0)
 #endif // SWAP
 
-INLINE int sgn(int x);
-INLINE int sgn3(int x);
-INLINE int max(int a, int b);
-INLINE int min(int a, int b);
+INLINE constexpr int sgn(int x);
+INLINE constexpr int sgn3(int x);
+INLINE constexpr int max(int a, int b);
+INLINE constexpr int min(int a, int b);
 
 //\}
 
@@ -134,10 +134,10 @@ INLINE int min(int a, int b);
 //! Wraps \a x to stay in range [\a min, \a max>
 #define WRAP(x, min, max) ((x) >= (max) ? (x) + (min) - (max) : (((x) < (min)) ? (x) + (max) - (min) : (x)))
 
-INLINE BOOL in_range(int x, int min, int max);
-INLINE int  clamp(int x, int min, int max);
-INLINE int  reflect(int x, int min, int max);
-INLINE int  wrap(int x, int min, int max);
+INLINE constexpr BOOL in_range(int x, int min, int max);
+INLINE constexpr int  clamp(int x, int min, int max);
+INLINE constexpr int  reflect(int x, int min, int max);
+INLINE constexpr int  wrap(int x, int min, int max);
 
 //\}
 
@@ -222,17 +222,17 @@ typedef struct POINT
 } POINT, POINT32;
 
 // --- Point functions ---
-INLINE POINT *pt_set(POINT *pd, int x, int y);
-INLINE POINT *pt_add(POINT *pd, const POINT *pa, const POINT *pb);
-INLINE POINT *pt_sub(POINT *pd, const POINT *pa, const POINT *pb);
-INLINE POINT *pt_scale(POINT *pd, const POINT *pa, int c);
+INLINE constexpr POINT *pt_set(POINT *pd, int x, int y);
+INLINE constexpr POINT *pt_add(POINT *pd, const POINT *pa, const POINT *pb);
+INLINE constexpr POINT *pt_sub(POINT *pd, const POINT *pa, const POINT *pb);
+INLINE constexpr POINT *pt_scale(POINT *pd, const POINT *pa, int c);
 
-INLINE POINT *pt_add_eq(POINT *pd, const POINT *pb);
-INLINE POINT *pt_sub_eq(POINT *pd, const POINT *pb);
-INLINE POINT *pt_scale_eq(POINT *pd, int c);
+INLINE constexpr POINT *pt_add_eq(POINT *pd, const POINT *pb);
+INLINE constexpr POINT *pt_sub_eq(POINT *pd, const POINT *pb);
+INLINE constexpr POINT *pt_scale_eq(POINT *pd, int c);
 
-INLINE int pt_cross(const POINT *pa, const POINT *pb);
-INLINE int pt_dot(const POINT *pa, const POINT *pb);
+INLINE constexpr int pt_cross(const POINT *pa, const POINT *pb);
+INLINE constexpr int pt_dot(const POINT *pa, const POINT *pb);
 
 int pt_in_rect(const POINT *pt, const struct RECT *rc);
 
@@ -250,15 +250,15 @@ typedef struct RECT
     int right, bottom;
 } RECT, RECT32;
 
-INLINE RECT *rc_set(RECT *rc, int l, int t, int r, int b);
-INLINE RECT *rc_set2(RECT *rc, int x, int y, int w, int h);
-INLINE int   rc_width(const RECT *rc);
-INLINE int   rc_height(const RECT *rc);
-INLINE RECT *rc_set_pos(RECT *rc, int x, int y);
-INLINE RECT *rc_set_size(RECT *rc, int w, int h);
-INLINE RECT *rc_move(RECT *rc, int dx, int dy);
-INLINE RECT *rc_inflate(RECT *rc, int dw, int dh);
-INLINE RECT *rc_inflate2(RECT *rc, const RECT *dr);
+INLINE constexpr RECT *rc_set(RECT *rc, int l, int t, int r, int b);
+INLINE constexpr RECT *rc_set2(RECT *rc, int x, int y, int w, int h);
+INLINE constexpr int   rc_width(const RECT *rc);
+INLINE constexpr int   rc_height(const RECT *rc);
+INLINE constexpr RECT *rc_set_pos(RECT *rc, int x, int y);
+INLINE constexpr RECT *rc_set_size(RECT *rc, int w, int h);
+INLINE constexpr RECT *rc_move(RECT *rc, int dx, int dy);
+INLINE constexpr RECT *rc_inflate(RECT *rc, int dw, int dh);
+INLINE constexpr RECT *rc_inflate2(RECT *rc, const RECT *dr);
 
 RECT *rc_normalize(RECT *rc);
 
@@ -275,52 +275,52 @@ typedef struct VECTOR
     FIXED x, y, z;
 } VECTOR;
 
-INLINE VECTOR *vec_set(VECTOR *vd, FIXED x, FIXED y, FIXED z);
-INLINE VECTOR *vec_add(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
-INLINE VECTOR *vec_sub(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
-INLINE VECTOR *vec_mul(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
-INLINE VECTOR *vec_scale(VECTOR *vd, const VECTOR *va, FIXED c);
+INLINE constexpr VECTOR *vec_set(VECTOR *vd, FIXED x, FIXED y, FIXED z);
+INLINE constexpr VECTOR *vec_add(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
+INLINE constexpr VECTOR *vec_sub(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
+INLINE constexpr VECTOR *vec_mul(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
+INLINE constexpr VECTOR *vec_scale(VECTOR *vd, const VECTOR *va, FIXED c);
 INLINE FIXED   vec_dot(const VECTOR *va, const VECTOR *vb);
 
-INLINE VECTOR *vec_add_eq(VECTOR *vd, const VECTOR *vb);
-INLINE VECTOR *vec_sub_eq(VECTOR *vd, const VECTOR *vb);
-INLINE VECTOR *vec_mul_eq(VECTOR *vd, const VECTOR *vb);
-INLINE VECTOR *vec_scale_eq(VECTOR *vd, FIXED c);
+INLINE constexpr VECTOR *vec_add_eq(VECTOR *vd, const VECTOR *vb);
+INLINE constexpr VECTOR *vec_sub_eq(VECTOR *vd, const VECTOR *vb);
+INLINE constexpr VECTOR *vec_mul_eq(VECTOR *vd, const VECTOR *vb);
+INLINE constexpr VECTOR *vec_scale_eq(VECTOR *vd, FIXED c);
 
 VECTOR *vec_cross(VECTOR *vd, const VECTOR *va, const VECTOR *vb);
 
 /*!	\}	*/
 
-// === INLINE =========================================================
+// === INLINE constexpr =========================================================
 
 // --- General --------------------------------------------------------
 
 //! Get the sign of \a x.
-INLINE int sgn(int x)
+INLINE constexpr int sgn(int x)
 {
     return (x >= 0) ? +1 : -1;
 }
 
 //! Tri-state sign of \a x: -1 for negative, 0 for 0, +1 for positive.
-INLINE int sgn3(int x)
+INLINE constexpr int sgn3(int x)
 {
     return (x >> 31) - (-x >> 31);
 }
 
 //! Get the maximum of \a a and \a b
-INLINE int max(int a, int b)
+INLINE constexpr int max(int a, int b)
 {
     return (a > b) ? (a) : (b);
 }
 
 //! Get the minimum of \a a and \a b
-INLINE int min(int a, int b)
+INLINE constexpr int min(int a, int b)
 {
     return (a < b) ? (a) : (b);
 }
 
 //! Range check
-INLINE BOOL in_range(int x, int min, int max)
+INLINE constexpr BOOL in_range(int x, int min, int max)
 {
     return (u32)(x - min) < (u32)(max - min);
 }
@@ -329,7 +329,7 @@ INLINE BOOL in_range(int x, int min, int max)
 /*!	\return Truncated value of \a x.
  *	\note	\a max is exclusive!
  */
-INLINE int clamp(int x, int min, int max)
+INLINE constexpr int clamp(int x, int min, int max)
 {
     return (x >= max) ? (max - 1) : ((x < min) ? min : x);
 }
@@ -342,13 +342,13 @@ INLINE int clamp(int x, int min, int max)
  *	\return	Reflected value of \a x.
  *	\note	\a max is exclusive!
  */
-INLINE int reflect(int x, int min, int max)
+INLINE constexpr int reflect(int x, int min, int max)
 {
     return (x >= max) ? (2 * (max - 1) - x) : ((x < min) ? (2 * min - x) : x);
 }
 
 //! Wraps \a x to stay in range [\a min, \a max>
-INLINE int wrap(int x, int min, int max)
+INLINE constexpr int wrap(int x, int min, int max)
 {
     return (x >= max) ? (x + min - max) : ((x < min) ? (x + max - min) : x);
 }
@@ -486,7 +486,7 @@ INLINE int lu_lerp16(const s16 lut[], uint x, const uint shift)
 // --- Point ----------------------------------------------------------
 
 //! Initialize \a pd to (\a x, \a y)
-INLINE POINT *pt_set(POINT *pd, int x, int y)
+INLINE constexpr POINT *pt_set(POINT *pd, int x, int y)
 {
     pd->x = x;
     pd->y = y;
@@ -494,7 +494,7 @@ INLINE POINT *pt_set(POINT *pd, int x, int y)
 }
 
 //! Point addition: \a pd = \a pa + \a pb
-INLINE POINT *pt_add(POINT *pd, const POINT *pa, const POINT *pb)
+INLINE constexpr POINT *pt_add(POINT *pd, const POINT *pa, const POINT *pb)
 {
     pd->x = pa->x + pb->x;
     pd->y = pa->x + pb->y;
@@ -502,7 +502,7 @@ INLINE POINT *pt_add(POINT *pd, const POINT *pa, const POINT *pb)
 }
 
 //! Point subtraction: \a pd = \a pa - \a pb
-INLINE POINT *pt_sub(POINT *pd, const POINT *pa, const POINT *pb)
+INLINE constexpr POINT *pt_sub(POINT *pd, const POINT *pa, const POINT *pb)
 {
     pd->x = pa->x - pb->x;
     pd->y = pa->x - pb->y;
@@ -510,7 +510,7 @@ INLINE POINT *pt_sub(POINT *pd, const POINT *pa, const POINT *pb)
 }
 
 //! Point scale: \a pd = \a c * \a pa
-INLINE POINT *pt_scale(POINT *pd, const POINT *pa, int c)
+INLINE constexpr POINT *pt_scale(POINT *pd, const POINT *pa, int c)
 {
     pd->x = pa->x * c;
     pd->y = pa->y * c;
@@ -518,7 +518,7 @@ INLINE POINT *pt_scale(POINT *pd, const POINT *pa, int c)
 }
 
 //! Point  increment: \a pd += \a pb
-INLINE POINT *pt_add_eq(POINT *pd, const POINT *pb)
+INLINE constexpr POINT *pt_add_eq(POINT *pd, const POINT *pb)
 {
     pd->x += pb->y;
     pd->y += pb->y;
@@ -526,7 +526,7 @@ INLINE POINT *pt_add_eq(POINT *pd, const POINT *pb)
 }
 
 //! Point decrement: \a pd -= \a pb
-INLINE POINT *pt_sub_eq(POINT *pd, const POINT *pb)
+INLINE constexpr POINT *pt_sub_eq(POINT *pd, const POINT *pb)
 {
     pd->x -= pb->y;
     pd->y -= pb->y;
@@ -534,7 +534,7 @@ INLINE POINT *pt_sub_eq(POINT *pd, const POINT *pb)
 }
 
 //! Point scale: \a pd *= \a c
-INLINE POINT *pt_scale_eq(POINT *pd, int c)
+INLINE constexpr POINT *pt_scale_eq(POINT *pd, int c)
 {
     pd->x *= c;
     pd->y *= c;
@@ -546,13 +546,13 @@ INLINE POINT *pt_scale_eq(POINT *pd, int c)
  *	  extend it to 3D and get the value of its <i>z</i>-component,
  *	  which can be used for a test for parallelism.
  */
-INLINE int pt_cross(const POINT *pa, const POINT *pb)
+INLINE constexpr int pt_cross(const POINT *pa, const POINT *pb)
 {
     return pa->x * pb->y - pa->y * pb->x;
 }
 
 //! Point 'dot'-product:\a pa \htmlonly &middot; \endhtmlonly \a pb
-INLINE int pt_dot(const POINT *pa, const POINT *pb)
+INLINE constexpr int pt_dot(const POINT *pa, const POINT *pb)
 {
     return pa->x * pb->x + pa->y * pb->y;
 }
@@ -565,7 +565,7 @@ INLINE int pt_dot(const POINT *pa, const POINT *pb)
  *	\param r	Right side.
  *	\param b	Bottom side.
  */
-INLINE RECT *rc_set(RECT *rc, int l, int t, int r, int b)
+INLINE constexpr RECT *rc_set(RECT *rc, int l, int t, int r, int b)
 {
     rc->left   = l;
     rc->top    = t;
@@ -580,7 +580,7 @@ INLINE RECT *rc_set(RECT *rc, int l, int t, int r, int b)
  *	\param w	Width.
  *	\param h	Height.
  */
-INLINE RECT *rc_set2(RECT *rc, int x, int y, int w, int h)
+INLINE constexpr RECT *rc_set2(RECT *rc, int x, int y, int w, int h)
 {
     rc->left   = x;
     rc->top    = y;
@@ -590,19 +590,19 @@ INLINE RECT *rc_set2(RECT *rc, int x, int y, int w, int h)
 }
 
 //! Get rectangle width.
-INLINE int rc_width(const RECT *rc)
+INLINE constexpr int rc_width(const RECT *rc)
 {
     return rc->right - rc->left;
 }
 
 //! Get rectangle height
-INLINE int rc_height(const RECT *rc)
+INLINE constexpr int rc_height(const RECT *rc)
 {
     return rc->bottom - rc->top;
 }
 
 //! Move rectangle to (\a x, \a y) position.
-INLINE RECT *rc_set_pos(RECT *rc, int x, int y)
+INLINE constexpr RECT *rc_set_pos(RECT *rc, int x, int y)
 {
     rc->right += x - rc->left;
     rc->left = x;
@@ -612,7 +612,7 @@ INLINE RECT *rc_set_pos(RECT *rc, int x, int y)
 }
 
 //! Reside rectangle.
-INLINE RECT *rc_set_size(RECT *rc, int w, int h)
+INLINE constexpr RECT *rc_set_size(RECT *rc, int w, int h)
 {
     rc->right  = rc->left + w;
     rc->bottom = rc->top + h;
@@ -620,7 +620,7 @@ INLINE RECT *rc_set_size(RECT *rc, int w, int h)
 }
 
 //! Move rectangle by (\a dx, \a dy).
-INLINE RECT *rc_move(RECT *rc, int dx, int dy)
+INLINE constexpr RECT *rc_move(RECT *rc, int dx, int dy)
 {
     rc->left += dx;
     rc->top += dy;
@@ -630,7 +630,7 @@ INLINE RECT *rc_move(RECT *rc, int dx, int dy)
 }
 
 //! Increase size by \a dw horizontally and \a dh vertically.
-INLINE RECT *rc_inflate(RECT *rc, int dw, int dh)
+INLINE constexpr RECT *rc_inflate(RECT *rc, int dw, int dh)
 {
     rc->left -= dw;
     rc->top -= dh;
@@ -640,7 +640,7 @@ INLINE RECT *rc_inflate(RECT *rc, int dw, int dh)
 }
 
 //! Increase sizes on all sides by values of rectangle \a dr.
-INLINE RECT *rc_inflate2(RECT *rc, const RECT *dr)
+INLINE constexpr RECT *rc_inflate2(RECT *rc, const RECT *dr)
 {
     rc->left += dr->left;
     rc->top += dr->top;
@@ -652,7 +652,7 @@ INLINE RECT *rc_inflate2(RECT *rc, const RECT *dr)
 // --- Vector ---------------------------------------------------------
 
 //! Initialize a vector
-INLINE VECTOR *vec_set(VECTOR *vd, FIXED x, FIXED y, FIXED z)
+INLINE constexpr VECTOR *vec_set(VECTOR *vd, FIXED x, FIXED y, FIXED z)
 {
     vd->x = x;
     vd->y = y;
@@ -661,7 +661,7 @@ INLINE VECTOR *vec_set(VECTOR *vd, FIXED x, FIXED y, FIXED z)
 }
 
 //! Add vectors: \b d = \b a + \b b;
-INLINE VECTOR *vec_add(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
+INLINE constexpr VECTOR *vec_add(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
 {
     vd->x = va->x + vb->x;
     vd->y = va->y + vb->y;
@@ -670,7 +670,7 @@ INLINE VECTOR *vec_add(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
 }
 
 //! Subtract vectors: \b d = \b a - \b b;
-INLINE VECTOR *vec_sub(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
+INLINE constexpr VECTOR *vec_sub(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
 {
     vd->x = va->x - vb->x;
     vd->y = va->y - vb->y;
@@ -679,7 +679,7 @@ INLINE VECTOR *vec_sub(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
 }
 
 //! Multiply vectors elements: \b d = \b S(ax, ay, az) �\b b
-INLINE VECTOR *vec_mul(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
+INLINE constexpr VECTOR *vec_mul(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
 {
     vd->x = fxmul(va->x, vb->x);
     vd->y = fxmul(va->y, vb->y);
@@ -688,7 +688,7 @@ INLINE VECTOR *vec_mul(VECTOR *vd, const VECTOR *va, const VECTOR *vb)
 }
 
 //! Scale vector: \b d = c*\b a
-INLINE VECTOR *vec_scale(VECTOR *vd, const VECTOR *va, FIXED c)
+INLINE constexpr VECTOR *vec_scale(VECTOR *vd, const VECTOR *va, FIXED c)
 {
     vd->x = fxmul(va->x, c);
     vd->y = fxmul(va->y, c);
@@ -707,7 +707,7 @@ INLINE FIXED vec_dot(const VECTOR *va, const VECTOR *vb)
 }
 
 //! Increment vector: \b d += \b b;
-INLINE VECTOR *vec_add_eq(VECTOR *vd, const VECTOR *vb)
+INLINE constexpr VECTOR *vec_add_eq(VECTOR *vd, const VECTOR *vb)
 {
     vd->x += vb->x;
     vd->y += vb->y;
@@ -716,7 +716,7 @@ INLINE VECTOR *vec_add_eq(VECTOR *vd, const VECTOR *vb)
 }
 
 //! Decrease vector: \b d -= \b b;
-INLINE VECTOR *vec_sub_eq(VECTOR *vd, const VECTOR *vb)
+INLINE constexpr VECTOR *vec_sub_eq(VECTOR *vd, const VECTOR *vb)
 {
     vd->x -= vb->x;
     vd->y -= vb->y;
@@ -725,7 +725,7 @@ INLINE VECTOR *vec_sub_eq(VECTOR *vd, const VECTOR *vb)
 }
 
 //! Multiply vectors elements: \b d = \b S(dx, dy, dz) �\b b
-INLINE VECTOR *vec_mul_eq(VECTOR *vd, const VECTOR *vb)
+INLINE constexpr VECTOR *vec_mul_eq(VECTOR *vd, const VECTOR *vb)
 {
     vd->x = fxmul(vd->x, vb->x);
     vd->y = fxmul(vd->y, vb->y);
@@ -734,7 +734,7 @@ INLINE VECTOR *vec_mul_eq(VECTOR *vd, const VECTOR *vb)
 }
 
 //! Scale vector: \b d = c*\b d
-INLINE VECTOR *vec_scale_eq(VECTOR *vd, FIXED c)
+INLINE constexpr VECTOR *vec_scale_eq(VECTOR *vd, FIXED c)
 {
     vd->x = fxmul(vd->x, c);
     vd->y = fxmul(vd->y, c);

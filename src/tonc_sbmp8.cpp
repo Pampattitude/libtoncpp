@@ -18,7 +18,7 @@ typedef u8 pixel_t;
 	(pixel_t*)(psrf->data + (y)*psrf->pitch + (x)*sizeof(pixel_t) )
 
 
-void sbmp8_floodfill_internal(const TSurface *dst, int x, int y, 
+void sbmp8_floodfill_internal(const TSurface *dst,uint x, uint y, 
 	u8 clrNew, u8 clrOld);
 
 // --------------------------------------------------------------------
@@ -375,14 +375,15 @@ void sbmp8_floodfill(const TSurface *dst, int x, int y, u32 clr)
 }
 
 //! Internal routine for floodfill
-void sbmp8_floodfill_internal(const TSurface *dst, int x, int y, 
+void sbmp8_floodfill_internal(const TSurface *dst, uint x, uint y, 
 	pixel_t clrNew, pixel_t clrOld)
 {
 	pixel_t *dstL= PXPTR(dst, 0, y);
 	uint dstPitch= dst->pitch/PXSIZE, dstH= dst->height;
 	
 	// Find horz edges, then fill
-	int ii, left=x, right=x;
+	uint ii;
+	int left=x, right=x;
 
 	while(dstL[left-1]==clrOld && left>0)
 		left--;
@@ -391,7 +392,7 @@ void sbmp8_floodfill_internal(const TSurface *dst, int x, int y,
 	toncset(&dstL[left], clrNew, right+1-left);
 
 	// Recursive *ick*. All the stack-work's making GBA's head spin.
-	for(ii=left; ii<=right; ii++)
+	for(ii=(uint)left; ii<=(uint)right; ii++)
 	{
 		// clr-first check saves 
 		if(dstL[ii-dstPitch] == clrOld && y>0)

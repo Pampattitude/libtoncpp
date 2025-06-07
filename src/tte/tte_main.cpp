@@ -738,7 +738,7 @@ POINT16 tte_get_text_size(const char *str)
 	if(x>width)
 		width= x;
 
-	POINT16 pt= { width, height };
+	POINT16 pt= { (s16)width, (s16)height };
 	return pt;
 }
 
